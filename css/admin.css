@@ -515,3 +515,78 @@ body {
         min-width: 900px;
     }
 }
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        display: block;
+    }
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+        border-bottom: none;
+    }
+    .sidebar-header h2 {
+        font-size: 1.2rem;
+    }
+    .sidebar-header p {
+        margin-top: 0;
+    }
+    .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .sidebar-nav::-webkit-scrollbar {
+        height: 4px;
+    }
+    .sidebar-nav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .sidebar-nav::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+    .sidebar-footer {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px dashed var(--border-color);
+    }
+    .nav-item {
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+        font-size: 0.9rem;
+    }
+    .topbar {
+        padding: 1.5rem 1rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .admin-profile {
+        width: 100%;
+        justify-content: center;
+    }
+    .content-wrapper {
+        padding: 0 1rem 1.5rem;
+    }
+    .login-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    .login-header .lock-icon {
+        font-size: 2rem;
+    }
+}
