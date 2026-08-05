@@ -570,14 +570,16 @@ button.service-btn {
     border: 1px solid var(--border-color);
 }
 
-.gallery-item-preview img {
+.gallery-item-preview img,
+.gallery-item-preview video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
-.gallery-item-preview:hover img {
+.gallery-item-preview:hover img,
+.gallery-item-preview:hover video {
     transform: scale(1.1); /* hover:scale */
     filter: brightness(1.1);
 }
@@ -664,7 +666,8 @@ button.service-btn {
     height: 100%;
 }
 
-.masonry-item img {
+.masonry-item img,
+.masonry-item video {
     width: 100%;
     height: 100%;
     display: block;
@@ -674,14 +677,17 @@ button.service-btn {
 }
 
 /* Masonry asimetrik efekti için farklı oranlar */
-.masonry-item:nth-child(2n) img {
+.masonry-item:nth-child(2n) img,
+.masonry-item:nth-child(2n) video {
     aspect-ratio: 4/5;
 }
-.masonry-item:nth-child(3n) img {
+.masonry-item:nth-child(3n) img,
+.masonry-item:nth-child(3n) video {
     aspect-ratio: 16/9;
 }
 
-.masonry-item:hover img {
+.masonry-item:hover img,
+.masonry-item:hover video {
     transform: scale(1.08); /* Hover büyüme efekti */
 }
 
