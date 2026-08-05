@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 // Kendi projenizin asıl ayarları (Screenshot'tan alındı)
@@ -43,5 +43,24 @@ export async function saveReservation(formData) {
     } catch (error) {
         console.error("Firestore'a veri eklerken bir hata oluştu:", error);
         throw error; // Hatayı UI'da (main.js) yakalamak için fırlatıyoruz
+    }
+}
+
+/**
+ * Verilen rezervasyon ID'sine gore durum bilgisini Firestore'dan ceker.
+ */
+export async function getReservationStatus(docId) {
+    try {
+        const docRef = doc(db, "reservations", docId);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+            return docSnap.data().status;
+        } else {
+            return null; // Kayit bulunamadi
+        }
+    } catch (error) {
+        console.error("Durum sorgulanirken hata olustu:", error);
+        throw error;
     }
 }

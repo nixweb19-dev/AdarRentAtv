@@ -107,6 +107,15 @@
                 </a>
             </div>
         </section>
+        
+        <!-- Footer / Location -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <i class="fa-solid fa-location-dot"></i>
+                <p><strong>Adresimiz:</strong> Suiçecek, Girne Cd. No:437, 07070 Konyaaltı/Antalya</p>
+                <a href="https://maps.google.com/?q=Suiçecek, Girne Cd. No:437, 07070 Konyaaltı/Antalya" target="_blank" rel="noopener noreferrer" class="btn-map">Haritada Gör <i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+        </footer>
     </div>
 
     <!-- 1. Service Detail Modal -->
@@ -207,6 +216,27 @@
             </div>
         </div>
     </div>
+
+    <!-- 4. Reservation Status Modal -->
+    <div class="modal-overlay" id="statusModal" aria-hidden="true">
+        <div class="modal-container status-container text-center">
+            <button class="modal-close" id="closeStatusModal" aria-label="Kapat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="status-content">
+                <div class="status-icon-wrap" id="statusIconWrap">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                </div>
+                <h2>Rezervasyon Durumu</h2>
+                <p id="statusMessageText">Durum kontrol ediliyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Status Button -->
+    <button id="btnCheckStatus" class="btn-floating-status" style="display: none;">
+        <i class="fa-solid fa-clipboard-check"></i> Rezervasyonum
+    </button>
 
     <!-- Cookie / KVKK Banner -->
     <div class="cookie-banner" id="cookieBanner" aria-hidden="true">

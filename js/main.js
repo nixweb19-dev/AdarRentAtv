@@ -1,4 +1,4 @@
-import { saveReservation } from './firebase.min.js';
+import { saveReservation, getReservationStatus } from './firebase.js';
 
 const servicesData = {
     kapuz: {
@@ -347,10 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // 6. Veriyi Firebase'e Gönder
-            await saveReservation(formData);
+            const resId = await saveReservation(formData);
 
             // Başarılı olduğunda Rate Limit kaydını güncelle
             localStorage.setItem('lastReservationTime', Date.now());
+            
+            // Rezervasyon ID'sini sakla ve butonu göster
+            localStorage.setItem('currentReservationId', resId);
+            const btnCheckStatus = document.getElementById('btnCheckStatus');
+            if (btnCheckStatus) {
+                btnCheckStatus.style.display = 'flex';
+            }
 
             // 7. Başarılı İşlem Bildirimi
             submitBtn.innerHTML = '<i class="fa-solid fa-check-double"></i> Randevu Alındı!';
@@ -402,6 +409,78 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('cookiesAccepted', 'true');
             cookieBanner.classList.remove('active');
             cookieBanner.setAttribute('aria-hidden', 'true');
+        });
+    }
+
+    // ----------------------------------------------------
+    // Reservation Status Checking Logic
+    // ----------------------------------------------------
+    const btnCheckStatus = document.getElementById('btnCheckStatus');
+    const statusModal = document.getElementById('statusModal');
+    const closeStatusModal = document.getElementById('closeStatusModal');
+    const statusIconWrap = document.getElementById('statusIconWrap');
+    const statusMessageText = document.getElementById('statusMessageText');
+
+    const savedReservationId = localStorage.getItem('currentReservationId');
+    if (savedReservationId && btnCheckStatus) {
+        // Eğer daha önceden alınmış bir rezervasyon varsa butonu göster
+        btnCheckStatus.style.display = 'flex';
+    }
+
+    if (btnCheckStatus && statusModal && closeStatusModal) {
+        btnCheckStatus.addEventListener('click', async () => {
+            const currentId = localStorage.getItem('currentReservationId');
+            if (!currentId) return;
+
+            // Modalı aç ve yükleniyor durumunu göster
+            statusModal.classList.add('active');
+            statusModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            
+            statusIconWrap.className = 'status-icon-wrap';
+            statusIconWrap.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
+            statusMessageText.textContent = 'Durum kontrol ediliyor... Lütfen bekleyin.';
+
+            try {
+                const status = await getReservationStatus(currentId);
+                
+                if (status === 'onaylandı') {
+                    statusIconWrap.className = 'status-icon-wrap status-approved';
+                    statusIconWrap.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    statusMessageText.innerHTML = '<strong>Rezervasyonunuz yetkili ekip tarafından onaylandı!</strong><br><br>Belirtilen saatte konumda (Suiçecek, Girne Cd. No:437, 07070 Konyaaltı/Antalya) olmanız rica olunur.';
+                } else if (status === 'beklemede') {
+                    statusIconWrap.className = 'status-icon-wrap status-pending';
+                    statusIconWrap.innerHTML = '<i class="fa-solid fa-clock"></i>';
+                    statusMessageText.innerHTML = 'Rezervasyonunuz <strong>beklemede</strong>. Yetkili ekibimiz en kısa sürede inceleyip onaylayacaktır.';
+                } else if (status === 'iptal edildi' || status === 'iptal') {
+                    statusIconWrap.className = 'status-icon-wrap status-rejected';
+                    statusIconWrap.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    statusMessageText.innerHTML = 'Rezervasyonunuz <strong>iptal edilmiştir</strong>.';
+                } else {
+                    statusIconWrap.className = 'status-icon-wrap';
+                    statusIconWrap.innerHTML = '<i class="fa-solid fa-circle-question"></i>';
+                    statusMessageText.innerHTML = 'Rezervasyon durumu bilinmiyor veya kayıt bulunamadı.';
+                }
+            } catch (err) {
+                statusIconWrap.className = 'status-icon-wrap status-rejected';
+                statusIconWrap.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+                statusMessageText.innerHTML = 'Durum sorgulanırken bir hata oluştu. Lütfen bağlantınızı kontrol edin.';
+            }
+        });
+
+        // Modalı Kapatma
+        closeStatusModal.addEventListener('click', () => {
+            statusModal.classList.remove('active');
+            statusModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+        });
+
+        statusModal.addEventListener('click', (e) => {
+            if (e.target === statusModal) {
+                statusModal.classList.remove('active');
+                statusModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            }
         });
     }
 

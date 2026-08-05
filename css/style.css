@@ -1080,3 +1080,143 @@ body {
     flex-wrap: wrap;
     margin-top: 1.5rem;
 }
+
+/* ------------------------ */
+/* Footer Location */
+/* ------------------------ */
+.main-footer {
+    background: rgba(15, 23, 42, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    border-radius: 16px;
+    text-align: center;
+}
+.main-footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.main-footer i.fa-location-dot {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.main-footer p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin: 0;
+    line-height: 1.5;
+}
+.main-footer p strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+.btn-map {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+.btn-map:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+/* ------------------------ */
+/* Floating Status Button */
+/* ------------------------ */
+.btn-floating-status {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(234, 179, 8, 0.3);
+    z-index: 9000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-floating-status:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(234, 179, 8, 0.4);
+}
+.btn-floating-status i {
+    font-size: 1.2rem;
+}
+@media (max-width: 768px) {
+    .btn-floating-status {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ------------------------ */
+/* Status Modal Details */
+/* ------------------------ */
+.status-container {
+    max-width: 400px;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+.status-content {
+    padding: 2rem 1rem;
+}
+.status-icon-wrap {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: all 0.4s ease;
+}
+.status-icon-wrap.status-approved {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+.status-icon-wrap.status-pending {
+    background: rgba(234, 179, 8, 0.1);
+    color: #eab308;
+}
+.status-icon-wrap.status-rejected {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+.status-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.status-content p {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin: 0;
+}
