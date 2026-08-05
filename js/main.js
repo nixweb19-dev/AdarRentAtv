@@ -422,9 +422,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessageText = document.getElementById('statusMessageText');
 
     const savedReservationId = localStorage.getItem('currentReservationId');
+    const lastReservationTime = localStorage.getItem('lastReservationTime');
+    
     if (savedReservationId && btnCheckStatus) {
-        // Eğer daha önceden alınmış bir rezervasyon varsa butonu göster
-        btnCheckStatus.style.display = 'flex';
+        let isExpired = false;
+        if (lastReservationTime) {
+            const timePassed = Date.now() - parseInt(lastReservationTime);
+            // 2 saat = 2 * 60 * 60 * 1000 = 7200000 ms
+            if (timePassed > 7200000) {
+                isExpired = true;
+                // Süresi dolunca eski ID'yi temizle ki bir daha gereksiz yere çıkmasın
+                localStorage.removeItem('currentReservationId'); 
+            }
+        }
+        
+        if (!isExpired) {
+            // 2 saat geçmemişse butonu göster
+            btnCheckStatus.style.display = 'flex';
+        }
     }
 
     if (btnCheckStatus && statusModal && closeStatusModal) {
