@@ -1,0 +1,517 @@
+:root {
+    --bg-color: #09090b;
+    --sidebar-bg: #121217;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --primary-color: #facc15;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --border-color: rgba(255, 255, 255, 0.06);
+    
+    /* Durum (Status) Renkleri */
+    --status-pending: #fbbf24;
+    --status-pending-bg: rgba(251, 191, 36, 0.1);
+    --status-approved: #34d399;
+    --status-approved-bg: rgba(52, 211, 153, 0.1);
+    --status-cancelled: #f87171;
+    --status-cancelled-bg: rgba(248, 113, 113, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ------------------------ */
+/* Login Screen Tasarımı */
+/* ------------------------ */
+.login-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-card {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.login-header .lock-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.login-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.login-card .form-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.login-card label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.login-card input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.login-card input:focus {
+    border-color: var(--primary-color);
+}
+
+.login-card .btn-primary {
+    width: 100%;
+    padding: 0.85rem;
+    background: var(--primary-color);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: opacity 0.3s;
+}
+
+.login-card .btn-primary:hover {
+    opacity: 0.9;
+}
+
+.login-error {
+    margin-top: 1rem;
+    color: var(--status-cancelled);
+    background: var(--status-cancelled-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* ------------------------ */
+/* Sidebar Tasarımı */
+/* ------------------------ */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    z-index: 10;
+}
+
+.sidebar-header {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.05em;
+}
+
+.sidebar-header p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.2rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.nav-item.active {
+    background-color: rgba(250, 204, 21, 0.08);
+    color: var(--primary-color);
+    border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-item.logout {
+    color: #f87171;
+}
+
+.nav-item.logout:hover {
+    background-color: rgba(248, 113, 113, 0.1);
+}
+
+/* ------------------------ */
+/* Ana İçerik Alanı */
+/* ------------------------ */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-image: radial-gradient(circle at 100% 0%, rgba(250, 204, 21, 0.03) 0%, transparent 50%);
+}
+
+.topbar {
+    padding: 2.5rem 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.topbar-title h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.topbar-title p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card-bg);
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.admin-profile .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.admin-profile span {
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding-right: 0.5rem;
+}
+
+/* ------------------------ */
+/* Tablo Tasarımı (Data Table) */
+/* ------------------------ */
+.content-wrapper {
+    padding: 0 3rem 3rem;
+    flex-grow: 1;
+}
+
+.table-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.data-table th {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.25rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.95rem;
+    color: #e4e4e7;
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Onaylanmış Satır İçin Hafif Yeşil Arkaplan */
+.data-table tbody tr.row-approved {
+    background-color: rgba(52, 211, 153, 0.03);
+}
+.data-table tbody tr.row-approved:hover {
+    background-color: rgba(52, 211, 153, 0.06);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Hücre İçerik Stilleri */
+.customer-info strong {
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.customer-info span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.service-badge {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #e4e4e7;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.date-time {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.date-time span:first-child {
+    font-weight: 500;
+    color: #fff;
+}
+
+.date-time span:last-child {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+}
+
+/* Durum (Status) Rozeti */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-badge.beklemede {
+    background: var(--status-pending-bg);
+    color: var(--status-pending);
+}
+.status-badge.beklemede::before {
+    background: var(--status-pending);
+}
+
+.status-badge.onayland\ı,
+.status-badge.onaylandi {
+    background: var(--status-approved-bg);
+    color: var(--status-approved);
+}
+.status-badge.onayland\ı::before,
+.status-badge.onaylandi::before {
+    background: var(--status-approved);
+}
+
+.status-badge.iptal-edildi {
+    background: var(--status-cancelled-bg);
+    color: var(--status-cancelled);
+}
+.status-badge.iptal-edildi::before {
+    background: var(--status-cancelled);
+}
+
+/* İşlem Butonları (Actions) */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-action {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-action.approve {
+    color: var(--status-approved);
+}
+.btn-action.approve:hover:not(:disabled) {
+    background: var(--status-approved-bg);
+    border-color: rgba(52, 211, 153, 0.2);
+}
+
+.btn-action.cancel {
+    color: var(--status-cancelled);
+}
+.btn-action.cancel:hover:not(:disabled) {
+    background: var(--status-cancelled-bg);
+    border-color: rgba(248, 113, 113, 0.2);
+}
+
+.btn-action.delete {
+    color: var(--text-muted);
+    padding: 0.4rem 0.6rem;
+}
+.btn-action.delete:hover:not(:disabled) {
+    background: var(--status-cancelled-bg);
+    color: var(--status-cancelled);
+}
+
+.btn-action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Yükleniyor ve Boş Durumlar (Loading & Empty States) */
+.loading-cell {
+    text-align: center;
+    padding: 4rem !important;
+    color: var(--text-muted);
+}
+
+.loading-cell i {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    color: var(--primary-color);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 5rem 2rem !important;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+/* Responsive Table */
+@media (max-width: 1024px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    .data-table {
+        min-width: 900px;
+    }
+}

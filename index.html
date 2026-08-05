@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ADAR RENT ATV - Hizmet Seçimi. Kapuz Kanyonu ve Cennet ATV Safari Turları, Off-Road Parkurları.">
+    <title>ADAR RENT ATV - Hizmet Seçimi</title>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="img/LOGO.jpeg">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY_BURAYA_GELECEK"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="img/LOGO.jpeg" alt="ADAR RENT ATV Logo" class="brand-logo">
+            <h1 class="title">Hizmetinizi Seçin</h1>
+            <p class="subtitle">ADAR RENT ATV</p>
+        </header>
+
+        <main class="services">
+            <!-- 1. Hizmet -->
+            <button class="service-btn" data-id="kapuz" aria-label="Kapuz Kanyonu ATV Safari Turu">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                </div>
+                <div class="service-content">
+                    <h2>KAPUZ KANYONU</h2>
+                    <p>ATV SAFARİ TURU</p>
+                </div>
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <!-- 2. Hizmet -->
+            <button class="service-btn" data-id="cennet" aria-label="Cennet ATV Safari Turu">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <div class="service-content">
+                    <h2>CENNET</h2>
+                    <p>ATV SAFARİ TURU</p>
+                </div>
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <!-- 3. Hizmet -->
+            <button class="service-btn" data-id="anahard" aria-label="Ana Hard Off-Road Parkuru">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-truck-monster"></i>
+                </div>
+                <div class="service-content">
+                    <h2>ANA HARD</h2>
+                    <p>OFF-ROAD PARKURU</p>
+                </div>
+                <div class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <div class="privacy-note">
+                <i class="fa-solid fa-shield-halved"></i> Kişisel bilgileriniz 3. şahıslarla paylaşılmaz. Tüm veriler KVKK kapsamında korunmaktadır.
+            </div>
+        </main>
+
+        <!-- Home Gallery Preview -->
+        <section class="gallery-preview">
+            <h2 class="section-title">Maceradan Kareler</h2>
+            <div class="gallery-grid-preview">
+                <div class="gallery-item-preview">
+                    <img src="img/atv.jpeg" alt="ATV Safari" width="800" height="600" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item-preview">
+                    <img src="img/at2.jpeg" alt="Orman Yolu" width="800" height="600" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item-preview">
+                    <img src="img/a3.jpeg" alt="Çamur Parkuru" width="800" height="600" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item-preview">
+                    <img src="img/4.jpeg" alt="Dağ Manzarası" width="800" height="600" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <div class="gallery-actions">
+                <a href="galeri.html" class="btn-secondary">Daha Fazla Fotoğraf <i class="fa-solid fa-images"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+                    Bizi Instagram'da Takip Edin <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 1. Service Detail Modal -->
+    <div class="modal-overlay" id="serviceModal" aria-hidden="true">
+        <div class="modal-container">
+            <button class="modal-close" id="closeServiceModal" aria-label="Kapat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon"></div>
+                <h2 id="modalTitle">Başlık</h2>
+                <p id="modalSubtitle" class="modal-subtitle">Alt Başlık</p>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- Content will be injected here via JS -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOpenBooking" class="btn-primary">Randevu Al <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Booking Form Modal -->
+    <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+        <div class="modal-container booking-container">
+            <button class="modal-close" id="closeBookingModal" aria-label="Kapat">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h2>Randevu Formu</h2>
+                <p class="modal-subtitle" id="bookingServiceTitle">Seçilen Hizmet</p>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">İsim</label>
+                            <input type="text" id="firstName" required placeholder="Adınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Soyisim</label>
+                            <input type="text" id="lastName" required placeholder="Soyadınız">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefon Numarası</label>
+                        <input type="tel" id="phone" required placeholder="05XX XXX XX XX">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Yaş</label>
+                            <input type="number" id="age" min="16" required placeholder="16+">
+                        </div>
+                        <div class="form-group">
+                            <label for="peopleCount">Kişi Sayısı</label>
+                            <input type="number" id="peopleCount" min="1" max="20" required placeholder="Örn: 2">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Tarih</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Saat Seçimi</label>
+                            <select id="time" required>
+                                <!-- Injected via JS based on selected service -->
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="bookingForm" class="btn-primary success-btn">Randevuyu Tamamla <i class="fa-solid fa-check"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Success Modal -->
+    <div class="modal-overlay" id="successModal" aria-hidden="true">
+        <div class="modal-container success-container text-center">
+            <div class="success-content">
+                <div class="success-icon-wrap">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Harika! Talebiniz Alındı</h2>
+                <p id="successMessageText">Sayın İsim Soyisim, rezervasyon talebiniz başarıyla ulaştı. Size en kısa sürede dönüş sağlayacağız.</p>
+                <button type="button" class="btn-primary" id="btnSuccessOk">Tamam, Teşekkürler</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie / KVKK Banner -->
+    <div class="cookie-banner" id="cookieBanner" aria-hidden="true">
+        <div class="cookie-content">
+            <i class="fa-solid fa-cookie-bite"></i>
+            <p>Deneyiminizi geliştirmek ve hizmetlerimizi sunabilmek için çerezleri kullanıyoruz. Sitemizi kullanarak Çerez ve <strong>KVKK Politikamızı</strong> kabul etmiş sayılırsınız.</p>
+        </div>
+        <button class="btn-primary" id="acceptCookies">Anladım</button>
+    </div>
+
+    <script src="js/security.js"></script>
+    <script type="module" src="js/main.min.js"></script>
+</body>
+</html>
