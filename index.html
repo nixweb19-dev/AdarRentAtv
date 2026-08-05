@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ADAR RENT ATV - Hizmet Seçimi. Kapuz Kanyonu ve Cennet ATV Safari Turları, Off-Road Parkurları.">
+    <meta name="description"
+        content="ADAR RENT ATV - Hizmet Seçimi. Kapuz Kanyonu ve Cennet ATV Safari Turları, Off-Road Parkurları.">
     <title>ADAR RENT ATV - Hizmet Seçimi</title>
-    
+
     <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="img/LOGO.jpeg">
-    
+
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_SITE_KEY_BURAYA_GELECEK"></script>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -65,7 +68,7 @@
                     <i class="fa-solid fa-truck-monster"></i>
                 </div>
                 <div class="service-content">
-                    <h2>ANA HARD</h2>
+                    <h2>ZORLU PARKUR</h2>
                     <p>OFF-ROAD PARKURU</p>
                 </div>
                 <div class="arrow">
@@ -74,7 +77,8 @@
             </button>
 
             <div class="privacy-note">
-                <i class="fa-solid fa-shield-halved"></i> Kişisel bilgileriniz 3. şahıslarla paylaşılmaz. Tüm veriler KVKK kapsamında korunmaktadır.
+                <i class="fa-solid fa-shield-halved"></i> Kişisel bilgileriniz 3. şahıslarla paylaşılmaz. Tüm veriler
+                KVKK kapsamında korunmaktadır.
             </div>
         </main>
 
@@ -97,7 +101,8 @@
             </div>
             <div class="gallery-actions">
                 <a href="galeri.html" class="btn-secondary">Daha Fazla Fotoğraf <i class="fa-solid fa-images"></i></a>
-                <a href="https://www.instagram.com/adarrentatv/" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+                <a href="https://www.instagram.com/adarrentatv/" target="_blank" rel="noopener noreferrer"
+                    class="btn-instagram">
                     Bizi Instagram'da Takip Edin <i class="fa-brands fa-instagram"></i>
                 </a>
             </div>
@@ -119,7 +124,8 @@
                 <!-- Content will be injected here via JS -->
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnOpenBooking" class="btn-primary">Randevu Al <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" id="btnOpenBooking" class="btn-primary">Randevu Al <i
+                        class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -149,12 +155,12 @@
                             <input type="text" id="lastName" required placeholder="Soyadınız">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">Telefon Numarası</label>
                         <input type="tel" id="phone" required placeholder="05XX XXX XX XX">
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="age">Yaş</label>
@@ -165,7 +171,7 @@
                             <input type="number" id="peopleCount" min="1" max="20" required placeholder="Örn: 2">
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date">Tarih</label>
@@ -181,7 +187,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" form="bookingForm" class="btn-primary success-btn">Randevuyu Tamamla <i class="fa-solid fa-check"></i></button>
+                <button type="submit" form="bookingForm" class="btn-primary success-btn">Randevuyu Tamamla <i
+                        class="fa-solid fa-check"></i></button>
             </div>
         </div>
     </div>
@@ -194,7 +201,8 @@
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <h2>Harika! Talebiniz Alındı</h2>
-                <p id="successMessageText">Sayın İsim Soyisim, rezervasyon talebiniz başarıyla ulaştı. Size en kısa sürede dönüş sağlayacağız.</p>
+                <p id="successMessageText">Sayın İsim Soyisim, rezervasyon talebiniz başarıyla ulaştı. Size en kısa
+                    sürede dönüş sağlayacağız.</p>
                 <button type="button" class="btn-primary" id="btnSuccessOk">Tamam, Teşekkürler</button>
             </div>
         </div>
@@ -204,7 +212,8 @@
     <div class="cookie-banner" id="cookieBanner" aria-hidden="true">
         <div class="cookie-content">
             <i class="fa-solid fa-cookie-bite"></i>
-            <p>Deneyiminizi geliştirmek ve hizmetlerimizi sunabilmek için çerezleri kullanıyoruz. Sitemizi kullanarak Çerez ve <strong>KVKK Politikamızı</strong> kabul etmiş sayılırsınız.</p>
+            <p>Deneyiminizi geliştirmek ve hizmetlerimizi sunabilmek için çerezleri kullanıyoruz. Sitemizi kullanarak
+                Çerez ve <strong>KVKK Politikamızı</strong> kabul etmiş sayılırsınız.</p>
         </div>
         <button class="btn-primary" id="acceptCookies">Anladım</button>
     </div>
@@ -212,4 +221,5 @@
     <script src="js/security.js"></script>
     <script type="module" src="js/main.min.js"></script>
 </body>
+
 </html>
